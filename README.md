@@ -1,1 +1,1 @@
-# Artificial Intelligence Assignement 1
+# Artificial Intelligence Assignment 1
