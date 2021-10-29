@@ -1,1 +1,1 @@
-# ai_task_one
+# Artificial Intelligence Assignment 1
