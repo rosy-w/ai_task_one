@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 G = nx.Graph()
 nodes=["SportsComplex","Siwaka","Ph.1A","Ph.1B","STC","Phase2","J1","Phase3","Mada","ParkingLot"]
-node_sizes=[2000,1000,1000,1000,1000,1000,1000,1000,1000,2000]
+node_sizes=[1000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
 G.add_nodes_from(nodes)
 G.nodes()#confirm nodes
 
