@@ -1,0 +1,10 @@
+SportsComplex 730
+Siwaka 405
+Ph.1A 380
+Ph.1B 280
+Phase2 210
+STC 213
+Phase3 160
+J1 500
+Mada 630
+ParkingLot 0
