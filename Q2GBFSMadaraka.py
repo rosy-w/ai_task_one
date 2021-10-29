@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 from classes.greedybfs import GBfsTraverser
 
 G = nx.Graph()
-nodes=["SComplex","Siwaka","Ph.1A","Ph.1B","STC","Phase2","J1","Phase3","Mada","ParkingLot"]
+nodes=["SportsComplex","Siwaka","Ph.1A","Ph.1B","STC","Phase2","J1","Phase3","Mada","ParkingLot"]
 node_sizes=[000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
 G.add_nodes_from(nodes)
 G.nodes()#confirm nodes
 
 #Add Edges and their weights
-G.add_edge("SComplex","Siwaka",weight="450")
+G.add_edge("SportsComplex","Siwaka",weight="450")
 G.add_edge("Siwaka","Ph.1A",weight="10")
 G.add_edge("Siwaka","Ph.1B",weight="230")
 G.add_edge("Ph.1A","Ph.1B",weight="100")
@@ -26,7 +26,7 @@ G.add_edge("Mada","ParkingLot",weight="700")
 G.add_edge("Phase3","ParkingLot",weight="350")
 
 #position the nodes to resemble Nairobis map
-G.nodes["SComplex"]['pos']=(-4,2)
+G.nodes["SportsComplex"]['pos']=(-4,2)
 G.nodes["Siwaka"]['pos']=(-2,2)
 G.nodes["Ph.1A"]['pos']=(0,2)
 G.nodes["Ph.1B"]['pos']=(0,0)
@@ -54,7 +54,7 @@ node_pos = nx.get_node_attributes(G,'pos')
 
 #call BFS
 route_bfs = GBfsTraverser()
-routes = route_bfs.GBFS(G,heuristics,"SComplex","ParkingLot")
+routes = route_bfs.GBFS(G,heuristics,"SportsComplex","ParkingLot")
 
 route_list = route_bfs.expanded
 #color the nodes and edges in the route_bfs
@@ -66,7 +66,7 @@ nx.draw_networkx(G, node_pos,node_color= node_col, node_size=450)
 nx.draw_networkx_edges(G, node_pos,width=2,edge_color= edge_col)
 
 nx.draw_networkx_edge_labels(G, node_pos, edge_labels=arc_label)
-nx.draw_networkx_edge_labels(G, node_pos, edge_labels={('SComplex','Siwaka'):'UnkRoad(450m)',
+nx.draw_networkx_edge_labels(G, node_pos, edge_labels={('SportsComplex','Siwaka'):'UnkRoad(450m)',
    ('Siwaka','Ph.1A'):'SangaleRd(10m)',('Siwaka','Ph.1B'):'SangaleLink(230m)',('Ph.1A','Ph.1B'):'ParkingWalkWay(100m)',('Ph.1B','Phase2'):'KeriRd(112m)',
    ('Phase2','J1'):'KeriRd(600m)',('J1','Mada'):'SangaleRd(200m)',('Ph.1A','Mada'):'SangaleRoad(850m)',('Ph.1B','STC'):'KeriRd(50m)',
    ('STC','Phase2'):'STCwalkway(50m)',('Phase2','Phase3'):'KeriRd(500m)',('Phase3','ParkingLot'):'HimaGRd(350m)',('STC','ParkingLot'):'LibraryWalkWay(250m)',
