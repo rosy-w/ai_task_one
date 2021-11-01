@@ -12,14 +12,16 @@ class GBfsTraverser:
     self.visited = []
     self.end_search = False
     self.expanded=[]
+
   def GBFS(self,graph,heuristic,start, goal):
     visited = set()
     queue = PriorityQueue()
     queue.put((0, start))
 
-    while queue:
-        cost, node = queue.get()
-        current=node
+    while not queue.empty():
+        _, node = queue.get()
+        current = node
+
         if current not in visited:
             visited.add(current)
             self.expanded.append(current)
@@ -28,8 +30,9 @@ class GBfsTraverser:
                 return node, self.expanded
 
             neighbours = graph[current]
-            print ("Command; Walk to " ,current,end = "\n")
-            for i in neighbours:
-                if i not in visited:
-                    total_cost = heuristic[i]
-                    queue.put((total_cost, i))
+            print ("Command; Walk to ", current, end = "\n")
+
+            for neighbour in neighbours:
+                if neighbour not in visited:
+                    total_cost = heuristic[neighbour]
+                    queue.put((total_cost, neighbour))

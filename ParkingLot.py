@@ -1,7 +1,7 @@
 import os
 import networkx as nx
 import matplotlib.pyplot as plt
-from classes.greedybfs import GBfsTraverser
+from classes.ucs import UCSTraverser
 
 G = nx.Graph()
 nodes=["SportsComplex","Siwaka","Ph.1A","Ph.1B","STC","Phase2","J1","Phase3","Mada","ParkingLot"]
@@ -53,10 +53,10 @@ heuristics = getHeuristics(G)
 node_pos = nx.get_node_attributes(G,'pos')
 
 #call BFS
-route_bfs = GBfsTraverser()
-routes = route_bfs.GBFS(G,heuristics,"SportsComplex","ParkingLot")
+route_bfs = UCSTraverser(G)
+routes = route_bfs.traverse("SportsComplex","ParkingLot")
 
-route_list = route_bfs.expanded
+route_list = route_bfs.explored
 #color the nodes and edges in the route_bfs
 node_col = ['#c3b3ff' if not node in route_list else '#69f591' for node in G.nodes()]
 green_colored_edges = list(zip(route_list, route_list[1:]))
@@ -70,6 +70,6 @@ nx.draw_networkx_edge_labels(G, node_pos, edge_labels={('SportsComplex','Siwaka'
    ('Siwaka','Ph.1A'):'SangaleRd(10m)',('Siwaka','Ph.1B'):'SangaleLink(230m)',('Ph.1A','Ph.1B'):'ParkingWalkWay(100m)',('Ph.1B','Phase2'):'KeriRd(112m)',
    ('Phase2','J1'):'KeriRd(600m)',('J1','Mada'):'SangaleRd(200m)',('Ph.1A','Mada'):'SangaleRoad(850m)',('Ph.1B','STC'):'KeriRd(50m)',
    ('STC','Phase2'):'STCwalkway(50m)',('Phase2','Phase3'):'KeriRd(500m)',('Phase3','ParkingLot'):'HimaGRd(350m)',('STC','ParkingLot'):'LibraryWalkWay(250m)',
-   ('ParkingLot','Mada'):'LangataRd(700m)'}, font_color='#000000', font_size='x-small')
+   ('ParkingLot','Mada'):'LangataRd(700m)'},font_color='#000000',font_size='x-small')
 plt.axis('off')
 plt.show()
